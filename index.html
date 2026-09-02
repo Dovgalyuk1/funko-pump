@@ -103,23 +103,16 @@ a{color:inherit}
 .rail.ca{pointer-events:auto;cursor:pointer;color:var(--mint)}
 .rail.ca.copied{color:var(--yellow)}
 
-/* sound */
-#snd{position:fixed;right:14px;top:14px;z-index:95;display:flex;align-items:center;gap:8px;
-  background:rgba(6,33,28,.82);border:2px solid var(--ink-3);padding:6px 9px;
-  box-shadow:3px 3px 0 rgba(0,0,0,.5);font-size:9.5px;letter-spacing:.18em}
-#snd button{font:inherit;letter-spacing:.18em;background:var(--paper);color:var(--ink-3);border:2px solid var(--ink-3);
-  padding:4px 8px;cursor:pointer;font-weight:700}
-#snd input{width:56px;accent-color:var(--mint)}
-
 /* ---------- HERO ---------- */
 .wrap{max-width:1180px;margin:0 auto;padding:0 44px}
 header.hero{padding-top:clamp(40px,7vh,86px);padding-bottom:20px;position:relative}
+.hero-top{display:grid;grid-template-columns:1.06fr .94fr;gap:38px;align-items:center}
 .tag{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.28em;color:var(--ink-3);
   background:var(--yellow);border:2px solid var(--ink-3);padding:5px 10px;box-shadow:3px 3px 0 rgba(0,0,0,.5)}
 .wordmark{margin:18px 0 0;font-family:var(--disp);line-height:.86;letter-spacing:-.01em;
-  font-size:clamp(52px,13.4vw,168px);color:var(--paper);
-  -webkit-text-stroke:9px var(--ink-3);paint-order:stroke fill;
-  filter:drop-shadow(0 10px 0 var(--mint-d)) drop-shadow(0 19px 0 #2c5a4d) drop-shadow(0 30px 32px rgba(0,0,0,.62))}
+  font-size:clamp(46px,8.4vw,106px);color:var(--paper);
+  -webkit-text-stroke:7px var(--ink-3);paint-order:stroke fill;
+  filter:drop-shadow(0 8px 0 var(--mint-d)) drop-shadow(0 15px 0 #2c5a4d) drop-shadow(0 24px 28px rgba(0,0,0,.62))}
 .wordmark .two{display:block;background:linear-gradient(#ffffff 34%,var(--mint) 62%,var(--mint-d) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .slogan{margin:34px 0 0;font-size:clamp(13px,1.6vw,17px);line-height:1.8;color:#cfe8dd;max-width:44ch}
@@ -138,28 +131,30 @@ header.hero{padding-top:clamp(40px,7vh,86px);padding-bottom:20px;position:relati
   font-family:var(--disp);font-size:clamp(11px,1.7vw,19px);letter-spacing:.01em}
 .box-title .num{background:var(--mint);color:var(--ink-3);border:3px solid var(--ink-3);border-radius:999px;
   padding:3px 11px;font-size:clamp(10px,1.5vw,15px)}
-.window{position:relative;background:#fff;
-  isolation:isolate;overflow:hidden;aspect-ratio:1/1;border-bottom:4px solid var(--ink-3)}
-.window::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:6;
+.window,.shrine{position:relative;background:#fff;
+  isolation:isolate;overflow:hidden;aspect-ratio:1/1}
+.window{border-bottom:4px solid var(--ink-3)}
+.window::after,.shrine::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:6;
   background:linear-gradient(118deg, rgba(255,255,255,.62) 0 16%, transparent 30% 62%, rgba(255,255,255,.34) 76%, transparent 88%);
   mix-blend-mode:screen;opacity:.55}
-.window::before{content:"";position:absolute;inset:9px;border:2px solid rgba(15,58,49,.14);z-index:5;pointer-events:none;border-radius:6px}
+.window::before,.shrine::before{content:"";position:absolute;inset:9px;border:2px solid rgba(15,58,49,.14);z-index:5;pointer-events:none;border-radius:6px}
+.boxshot{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:2}
+
+/* the shrine — bobblehead next to the wordmark */
+.shrine{border:5px solid var(--ink-3);box-shadow:16px 16px 0 rgba(0,0,0,.55), inset 0 0 0 3px #e7e0cd}
 
 .figure{position:absolute;inset:0;cursor:pointer;z-index:2}
 .figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;
   -webkit-user-drag:none;user-select:none}
 .fig-head{clip-path:inset(0 0 42% 0);transform-origin:50% 53%;z-index:1;
-  animation:bobble 3.2s cubic-bezier(.36,.07,.19,.97) infinite}
+  animation:bobble 2.1s ease-in-out infinite}
 .fig-body{clip-path:inset(53% 0 0 0);z-index:2}
 @keyframes bobble{
-  0%{transform:rotate(0deg)}
-  9%{transform:rotate(4.6deg)}
-  21%{transform:rotate(-3.7deg)}
-  33%{transform:rotate(2.7deg)}
-  44%{transform:rotate(-1.8deg)}
-  54%{transform:rotate(1.05deg)}
-  63%{transform:rotate(-.5deg)}
-  71%,100%{transform:rotate(0deg)}
+  0%{transform:rotate(-4.2deg)}
+  25%{transform:rotate(1.6deg)}
+  50%{transform:rotate(4.2deg)}
+  75%{transform:rotate(-1.6deg)}
+  100%{transform:rotate(-4.2deg)}
 }
 @keyframes bobble-hard{
   0%{transform:rotate(0deg)}
@@ -313,8 +308,8 @@ footer b{color:var(--mint);font-weight:400}
   body{padding-bottom:44px}
   section{padding:46px 0}
   .wordmark{-webkit-text-stroke-width:6px}
-  #snd{right:10px;top:10px;padding:5px 7px}
-  #snd input{width:44px}
+  .hero-top{grid-template-columns:1fr;gap:26px}
+  .shrine{box-shadow:9px 9px 0 rgba(0,0,0,.55), inset 0 0 0 3px #e7e0cd}
   #lb .nav{align-items:flex-end;padding-bottom:18px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -345,12 +340,6 @@ footer b{color:var(--mint);font-weight:400}
 <div class="film grain"></div>
 <div class="film vig"></div>
 
-<!-- ============================== SOUND ============================== -->
-<div id="snd">
-  <button id="sndbtn">SOUND OFF</button>
-  <input id="vol" type="range" min="0" max="100" value="55" aria-label="volume">
-</div>
-
 <div class="rail rail-l"><span>VINYL FIGURE · 3.75 IN · SEALED · SHELF 04 · ROW 11</span></div>
 <div class="rail rail-r ca"><span>CA: <b class="ca-val">soon</b> · CLICK TO COPY</span></div>
 
@@ -359,12 +348,26 @@ footer b{color:var(--mint);font-weight:400}
 
 <div class="wrap">
   <header class="hero">
-    <div class="tag">◆ POP! ICONS · #01 · MINT</div>
+    <div class="hero-top">
+      <div class="hero-txt">
+        <div class="tag">◆ POP! ICONS · #01 · MINT</div>
 
-    <h1 class="wordmark">FUNKO<span class="two">PUMP</span></h1>
+        <h1 class="wordmark">FUNKO<span class="two">PUMP</span></h1>
 
-    <p class="slogan">i was sealed behind clear plastic and told to look happy about it.
-      my head has not stopped moving since the factory. <em>nobody told me when it stops.</em></p>
+        <p class="slogan">i was sealed behind clear plastic and told to look happy about it.
+          my head has not stopped moving since the factory. <em>nobody told me when it stops.</em></p>
+      </div>
+
+      <div class="shrine">
+        <div class="counter">BOBBLES <b id="bcount">0</b></div>
+        <div class="rank" id="brank">FACTORY FRESH</div>
+        <div class="figure" id="figure" title="tap the figure">
+          <img class="fig-head" src="pump.webp" alt="funko pump, head tilted mid-nod, agreeing with nobody in particular">
+          <img class="fig-body" src="pump.webp" alt="funko pump standing on his own display base, mint vinyl, hands doing nothing">
+        </div>
+        <div class="nodhint" id="nodhint">HIS HEAD NEVER STOPS · TAP HIM</div>
+      </div>
+    </div>
 
     <div class="stage">
 
@@ -376,13 +379,8 @@ footer b{color:var(--mint);font-weight:400}
         </div>
 
         <div class="window">
-          <div class="counter">BOBBLES <b id="bcount">0</b></div>
-          <div class="rank" id="brank">FACTORY FRESH</div>
-          <div class="figure" id="figure" title="tap the figure">
-            <img class="fig-head" src="pump.webp" alt="funko pump, head tilted mid-nod, agreeing with nobody in particular">
-            <img class="fig-body" src="pump.webp" alt="funko pump standing on his own display base, mint vinyl, hands doing nothing">
-          </div>
-          <div class="nodhint" id="nodhint">TAP HIM · HE NODS</div>
+          <img class="boxshot" src="box.webp" alt="the sealed box, corner already softened by somebody's thumb, him behind the plastic">
+          <div class="nodhint">SEALED · NEVER OPENED · GRADED MINT</div>
         </div>
 
         <div class="box-foot">
@@ -518,25 +516,6 @@ footer b{color:var(--mint);font-weight:400}
 (function(){
   var doc=document, body=doc.body;
 
-  /* ---------- SOUND ---------- */
-  var muted=true, vol=.55, actx=null;
-  function blip(f,t){
-    if(muted) return;
-    try{
-      if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)();
-      var o=actx.createOscillator(), g=actx.createGain();
-      o.type=t||'square'; o.frequency.value=f||220; g.gain.value=.05*vol;
-      o.connect(g); g.connect(actx.destination); o.start();
-      g.gain.exponentialRampToValueAtTime(.0001, actx.currentTime+.1);
-      o.stop(actx.currentTime+.12);
-    }catch(e){}
-  }
-  var sb=doc.getElementById('sndbtn');
-  sb.addEventListener('click', function(e){
-    e.stopPropagation(); muted=!muted; sb.textContent = muted?'SOUND OFF':'SOUND ON'; if(!muted) blip(520);
-  });
-  doc.getElementById('vol').addEventListener('input', function(){ vol=this.value/100; });
-
   /* ---------- MARQUEE ---------- */
   var MQ=['MINT CONDITION','HEAD STILL MOVING','1 OF ???','DO NOT REMOVE FROM BOX','CHASE 1:6',
           'VINYL FIGURE','AGE 3 AND UP','BOX CORNER SLIGHTLY SOFT','SHELF 04 ROW 11','HE IS NODDING AGAIN'];
@@ -569,7 +548,7 @@ footer b{color:var(--mint);font-weight:400}
     lbimg.parentNode.className='fr '+v.cls;
     lbimg.style.filter=getComputedStyle(doc.querySelector('.grid button[data-i="'+at+'"] img')).filter;
     lbcp.textContent=v.n+' · '+v.t+' · '+v.alt;
-    lb.classList.add('on'); blip(660);
+    lb.classList.add('on');
   }
   function hide(){ lb.classList.remove('on'); }
   [grid,peek].forEach(function(c){
@@ -593,7 +572,6 @@ footer b{color:var(--mint);font-weight:400}
   doc.getElementById('ch').addEventListener('click', function(){
     chi=1-chi; t0.hidden=(chi!==0); t1.hidden=(chi!==1);
     lbl.textContent = chi===0 ? 'CH 01 · CASE LIGHT · PAL' : 'CH 02 · THE BOX · 2019 TAPE';
-    blip(chi?300:420);
   });
 
   /* ---------- BOBBLE (the feature) ---------- */
@@ -612,7 +590,6 @@ footer b{color:var(--mint);font-weight:400}
     n++; try{ localStorage.setItem('fp_bobbles',String(n)); }catch(e){}
     paint(); if(hint) hint.style.opacity=0;
     fig.classList.remove('hit'); void fig.offsetWidth; fig.classList.add('hit');
-    blip(180+Math.random()*90,'triangle');
   });
   fig.addEventListener('animationend', function(){ fig.classList.remove('hit'); }, true);
 
@@ -643,7 +620,6 @@ footer b{color:var(--mint);font-weight:400}
     if(done) return; done=true;
     body.classList.remove('booting'); body.classList.add('ready');
     setTimeout(function(){ var g=doc.getElementById('boot'); if(g) g.style.display='none'; },50);
-    blip(740);
   }
   function boot(){
     if(started) return; started=true;
@@ -654,7 +630,7 @@ footer b{color:var(--mint);font-weight:400}
       p=Math.min(100,p+Math.random()*11+5);
       fill.style.width=p+'%'; pct.textContent=(p<10?'0':'')+Math.floor(p)+'%';
       var want=Math.min(LOG.length, Math.ceil(p/100*LOG.length));
-      while(li<want){ log.innerHTML+=LOG[li]+'<br>'; li++; blip(300+li*40); }
+      while(li<want){ log.innerHTML+=LOG[li]+'<br>'; li++; }
       if(p>=100){ clearInterval(iv); setTimeout(finish,520); }
     },260);
     setTimeout(function(){ clearInterval(iv); finish(); }, 9000); /* safety */
